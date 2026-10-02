@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width,
+      initial-scale=1.0,
+      maximum-scale=1.0,
+      user-scalable=no">
+
+<title>Solforeyx — Master Film</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:#111;
+}
+
+body{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-family:Inter,Arial,sans-serif;
+}
+
+
+/* =========================================================
+   VIEWPORT
+========================================================= */
+
+#viewport{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    background:#111;
+}
+
+
+/* =========================================================
+   1080 × 1920 MASTER STAGE
+========================================================= */
+
+#stage{
+    position:absolute;
+
+    width:1080px;
+    height:1920px;
+
+    left:50%;
+    top:50%;
+
+    transform:
+        translate(-50%,-50%)
+        scale(var(--scale));
+
+    transform-origin:center center;
+
+    overflow:hidden;
+
+    background:#fff;
+}
+
+
+/* =========================================================
+   SCENE SYSTEM
+========================================================= */
+
+.scene{
+    position:absolute;
+    inset:0;
+
+    opacity:0;
+    visibility:hidden;
+
+    overflow:hidden;
+
+    transition:none;
+}
+
+.scene.active{
+    opacity:1;
+    visibility:visible;
+}
+
+
+/* =========================================================
+   BACKGROUND IMAGES
+========================================================= */
+
+.white-bg{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:0;
+}
+
+.black-bg{
+    position:absolute;
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:0;
+}
+
+
+/* =========================================================
+   TEXT COLORS
+========================================================= */
+
+.black{
+    color:#080808;
+}
+
+.white{
+    color:#fff;
+}
+
+.green{
+    color:#95bf47;
+}
+
+.gray{
+    color:#6d6d6d;
+}
+
+
+/* =========================================================
+   SMALL LABEL — bumped up
+========================================================= */
+
+.label{
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:24px;
+
+    letter-spacing:5px;
+
+    text-transform:uppercase;
+}
+
+
+/* =========================================================
+   SCENE 01
+========================================================= */
+
+#scene1{
+    background:#fff;
+}
+
+.s1-content{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:510px;
+
+    z-index:5;
+}
+
+.s1-label{
+    color:#777;
+
+    opacity:0;
+
+    transform:translateY(30px);
+}
+
+.s1-title{
+    margin-top:35px;
+
+    font-family:"Plus Jakarta Sans",sans-serif;
+
+    font-size:116px;
+
+    line-height:.94;
+
+    letter-spacing:-7px;
+
+    font-weight:900;
+
+    color:#080808;
+
+    overflow:hidden;
+}
+
+.s1-line{
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(120px);
+}
+
+.s1-line:nth-child(2){
+    transition-delay:.08s;
+}
+
+.s1-line:nth-child(3){
+    transition-delay:.16s;
+}
+
+.s1-green{
+    color:#95bf47;
+}
+
+.s1-bottom{
+    position:absolute;
+
+    left:80px;
+    bottom:150px;
+
+    font-family:"JetBrains Mono",monospace;
+
+    font-size:22px;
+
+    letter-spacing:4px;
+
+    color:#999;
+
+    opacity:0;
+}
+
+
+/* =========================================================
+   SCENE 02
+========================================================= */
+
+#scene2{
+    background:#fff;
+}
+
+.s2-wrap{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:430px;
+}
+
+.s2-word{
+    position:relative;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:126px;
+
+    font-weight:900;
+
+    letter-spacing:-7px;
+
+    line-height:.95;
+
+    margin-bottom:32px;
+
+    overflow:hidden;
+
+    color:#080808;
+}
+
+.s2-word span{
+    display:block;
+
+    transform:translateX(-105%);
+
+    opacity:0;
+}
+
+.s2-word:nth-child(2) span{
+    transform:translateX(105%);
+}
+
+.s2-word:nth-child(3) span{
+    transform:translateY(110%);
+}
+
+.s2-green{
+    color:#95bf47;
+}
+
+.s2-number{
+    position:absolute;
+
+    right:80px;
+    bottom:140px;
+
+    font-family:"JetBrains Mono";
+
+    font-size:20px;
+
+    letter-spacing:4px;
+
+    color:#999;
+}
+
+
+/* =========================================================
+   SCENE 03
+========================================================= */
+
+#scene3{
+    background:#050505;
+}
+
+.s3-wrap{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:500px;
+}
+
+.s3-label{
+    color:#95bf47;
+
+    opacity:0;
+    transform:translateY(30px);
+}
+
+.s3-big{
+    margin-top:35px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:128px;
+
+    line-height:.92;
+
+    font-weight:900;
+
+    letter-spacing:-8px;
+
+    color:#fff;
+}
+
+.s3-big div{
+    overflow:hidden;
+}
+
+.s3-big span{
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(120px);
+}
+
+.s3-big .accent{
+    color:#95bf47;
+}
+
+.s3-sub{
+    margin-top:45px;
+
+    width:760px;
+
+    font-size:32px;
+
+    line-height:1.4;
+
+    color:#999;
+
+    opacity:0;
+    transform:translateY(35px);
+}
+
+
+/* =========================================================
+   SCENE 04
+========================================================= */
+
+#scene4{
+    background:#fff;
+}
+
+.s4-wrap{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:430px;
+}
+
+.s4-small{
+    color:#888;
+
+    opacity:0;
+
+    transform:translateY(25px);
+}
+
+.s4-main{
+    margin-top:35px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:125px;
+
+    line-height:.9;
+
+    font-weight:900;
+
+    letter-spacing:-8px;
+
+    color:#080808;
+}
+
+.s4-main div{
+    overflow:hidden;
+}
+
+.s4-main span{
+    display:block;
+
+    transform:translateY(120px);
+
+    opacity:0;
+}
+
+.s4-main .accent{
+    color:#95bf47;
+}
+
+.s4-footer{
+    position:absolute;
+
+    left:80px;
+    bottom:150px;
+
+    font-family:"JetBrains Mono";
+
+    font-size:22px;
+
+    letter-spacing:5px;
+
+    color:#888;
+
+    opacity:0;
+}
+
+
+/* =========================================================
+   VIDEO SCENES
+========================================================= */
+
+.video-scene{
+    background:#050505;
+}
+
+.video{
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+    height:100%;
+
+    object-fit:cover;
+
+    z-index:0;
+}
+
+.video-overlay{
+    position:absolute;
+
+    inset:0;
+
+    z-index:1;
+
+    background:rgba(0,0,0,.38);
+}
+
+.video-copy{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    bottom:220px;
+
+    z-index:5;
+
+    color:#fff;
+}
+
+.video-label{
+    color:#95bf47;
+
+    opacity:0;
+
+    transform:translateY(35px);
+}
+
+.video-heading{
+    margin-top:28px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:104px;
+
+    line-height:.92;
+
+    font-weight:900;
+
+    letter-spacing:-7px;
+
+    overflow:hidden;
+}
+
+.video-heading span{
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(100px);
+}
+
+.video-description{
+    width:700px;
+
+    margin-top:35px;
+
+    font-size:30px;
+
+    line-height:1.4;
+
+    color:rgba(255,255,255,.75);
+
+    opacity:0;
+
+    transform:translateY(30px);
+}
+
+
+/* =========================================================
+   SERVICES — 7 ITEMS
+========================================================= */
+
+#scene9{
+    background:#fff;
+}
+
+.services-title{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:220px;
+
+    color:#080808;
+}
+
+.services-title .small{
+    color:#888;
+
+    opacity:0;
+    transform:translateY(30px);
+}
+
+.services-title h2{
+    margin-top:30px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:105px;
+
+    line-height:.92;
+
+    letter-spacing:-7px;
+
+    font-weight:900;
+
+    overflow:hidden;
+}
+
+.services-title h2 span{
+    display:block;
+
+    opacity:0;
+    transform:translateY(110px);
+}
+
+.services-title h2 .green{
+    color:#95bf47;
+}
+
+.service-list{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:620px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:0;
+}
+
+.service-row{
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    height:140px;
+
+    border-bottom:1px solid #dedede;
+
+    overflow:hidden;
+}
+
+.service-number{
+    width:100px;
+
+    font-family:"JetBrains Mono";
+
+    font-size:20px;
+
+    color:#999;
+
+    transform:translateX(-100px);
+
+    opacity:0;
+}
+
+.service-name{
+    font-family:"Plus Jakarta Sans";
+
+    font-size:44px;
+
+    font-weight:700;
+
+    color:#111;
+
+    transform:translateX(-120px);
+
+    opacity:0;
+}
+
+.service-name em{
+    color:#95bf47;
+
+    font-style:normal;
+}
+
+.services-footer{
+    position:absolute;
+
+    left:80px;
+    bottom:130px;
+
+    font-family:"JetBrains Mono";
+
+    font-size:22px;
+
+    letter-spacing:5px;
+
+    color:#888;
+
+    opacity:0;
+}
+
+
+/* =========================================================
+   BUILD / TRANSITION
+========================================================= */
+
+#scene10{
+    background:#050505;
+}
+
+.build-text{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:680px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:108px;
+
+    line-height:.92;
+
+    font-weight:900;
+
+    letter-spacing:-7px;
+
+    color:#fff;
+}
+
+.build-text div{
+    overflow:hidden;
+}
+
+.build-text span{
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(110px);
+}
+
+.build-text .green{
+    color:#95bf47;
+}
+
+.build-rule{
+    position:absolute;
+
+    left:80px;
+    top:600px;
+
+    width:0;
+    height:2px;
+
+    background:#95bf47;
+}
+
+
+/* =========================================================
+   FINAL FLYER
+========================================================= */
+
+#scene11{
+    background:#fff;
+}
+
+.flyer{
+    position:absolute;
+
+    inset:0;
+
+    background:#fff;
+
+    color:#080808;
+}
+
+
+.flyer-top{
+    position:absolute;
+
+    left:75px;
+    right:75px;
+
+    top:80px;
+
+    display:flex;
+
+    align-items:flex-start;
+
+    justify-content:space-between;
+}
+
+.flyer-brand{
+    font-family:"Plus Jakarta Sans";
+
+    font-size:62px;
+
+    font-weight:900;
+
+    letter-spacing:-4px;
+
+    opacity:0;
+    transform:translateY(-40px);
+}
+
+.flyer-brand span{
+    color:#95bf47;
+}
+
+.flyer-label{
+    font-family:"JetBrains Mono";
+
+    font-size:20px;
+
+    letter-spacing:4px;
+
+    color:#777;
+
+    padding-top:22px;
+
+    opacity:0;
+    transform:translateY(-30px);
+}
+
+
+.flyer-headline{
+    position:absolute;
+
+    left:75px;
+
+    top:260px;
+
+    width:850px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:108px;
+
+    line-height:.88;
+
+    font-weight:900;
+
+    letter-spacing:-8px;
+
+    overflow:hidden;
+}
+
+.flyer-headline div{
+    display:block;
+
+    opacity:0;
+
+    transform:translateY(120px);
+}
+
+.flyer-headline .green{
+    color:#95bf47;
+}
+
+
+.flyer-copy{
+    position:absolute;
+
+    left:75px;
+
+    top:560px;
+
+    width:620px;
+
+    font-size:26px;
+
+    line-height:1.45;
+
+    color:#666;
+
+    opacity:0;
+
+    transform:translateY(40px);
+}
+
+
+/* 7 FLYER SERVICES */
+
+.flyer-services{
+    position:absolute;
+
+    left:75px;
+    right:75px;
+
+    top:760px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    column-gap:30px;
+
+    row-gap:0;
+}
+
+.flyer-service{
+    height:95px;
+
+    border-bottom:1px solid #ddd;
+
+    display:flex;
+
+    align-items:center;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:#222;
+
+    opacity:0;
+
+    transform:translateX(-50px);
+}
+
+.flyer-service:nth-child(even){
+    transform:translateX(50px);
+}
+
+.flyer-service b{
+    width:54px;
+
+    font-family:"JetBrains Mono";
+
+    color:#aaa;
+
+    font-size:18px;
+}
+
+.flyer-service strong{
+    color:#95bf47;
+}
+
+
+/* PORTRAIT WITH EDGE GLOW */
+
+.flyer-portrait{
+    position:absolute;
+
+    right:20px;
+
+    bottom:0;
+
+    width:530px;
+
+    height:820px;
+
+    object-fit:contain;
+
+    object-position:center bottom;
+
+    z-index:10;
+
+    opacity:0;
+
+    filter:
+        drop-shadow(0 0 4px rgba(255,200,80,1))
+        drop-shadow(0 0 12px rgba(255,140,40,.95))
+        drop-shadow(0 0 28px rgba(212,120,30,.85))
+        drop-shadow(0 0 55px rgba(212,175,55,.7))
+        drop-shadow(0 0 90px rgba(212,175,55,.45));
+
+    animation:portraitPulse 3.4s ease-in-out infinite;
+}
+
+@keyframes portraitPulse{
+    0%,100%{
+        filter:
+            drop-shadow(0 0 4px rgba(255,200,80,1))
+            drop-shadow(0 0 12px rgba(255,140,40,.95))
+            drop-shadow(0 0 28px rgba(212,120,30,.85))
+            drop-shadow(0 0 55px rgba(212,175,55,.7))
+            drop-shadow(0 0 90px rgba(212,175,55,.45));
+    }
+    50%{
+        filter:
+            drop-shadow(0 0 6px rgba(255,225,140,1))
+            drop-shadow(0 0 18px rgba(255,160,60,1))
+            drop-shadow(0 0 40px rgba(220,140,40,.95))
+            drop-shadow(0 0 75px rgba(212,175,55,.85))
+            drop-shadow(0 0 120px rgba(212,175,55,.6));
+    }
+}
+
+
+.flyer-cta{
+    position:absolute;
+
+    left:75px;
+
+    bottom:125px;
+
+    z-index:20;
+
+    opacity:0;
+
+    transform:translateY(35px);
+}
+
+.flyer-cta-label{
+    font-family:"JetBrains Mono";
+
+    font-size:18px;
+
+    letter-spacing:4px;
+
+    color:#95bf47;
+}
+
+.flyer-phone{
+    margin-top:14px;
+
+    font-family:"Plus Jakarta Sans";
+
+    font-size:35px;
+
+    font-weight:800;
+
+    letter-spacing:1px;
+}
+
+.flyer-footer{
+    position:absolute;
+
+    left:75px;
+    right:75px;
+
+    bottom:55px;
+
+    border-top:1px solid #ddd;
+
+    padding-top:15px;
+
+    font-family:"JetBrains Mono";
+
+    font-size:15px;
+
+    letter-spacing:4px;
+
+    color:#999;
+}
+
+
+/* =========================================================
+   FINAL END CARD
+========================================================= */
+
+#scene12{
+    background:#050505;
+}
+
+.end-wrap{
+    position:absolute;
+
+    left:80px;
+    right:80px;
+
+    top:560px;
+
+    color:#fff;
+
+    text-align:center;
+}
+
+.end-brand{
+    font-family:"Plus Jakarta Sans";
+
+    font-size:120px;
+
+    font-weight:900;
+
+    letter-spacing:-8px;
+
+    opacity:0;
+
+    transform:scale(.88);
+}
+
+.end-brand span{
+    color:#95bf47;
+}
+
+.end-line{
+    width:0;
+
+    height:2px;
+
+    margin:45px auto;
+
+    background:#95bf47;
+}
+
+.end-title{
+    font-family:"Plus Jakarta Sans";
+
+    font-size:76px;
+
+    line-height:.98;
+
+    letter-spacing:-5px;
+
+    font-weight:800;
+
+    opacity:0;
+
+    transform:translateY(50px);
+}
+
+.end-title span{
+    color:#95bf47;
+}
+
+.end-phone{
+    margin-top:55px;
+
+    font-family:"JetBrains Mono";
+
+    font-size:32px;
+
+    letter-spacing:3px;
+
+    color:#fff;
+
+    opacity:0;
+
+    transform:translateY(30px);
+}
+
+.end-small{
+    position:absolute;
+
+    bottom:140px;
+
+    width:100%;
+
+    text-align:center;
+
+    font-family:"JetBrains Mono";
+
+    font-size:18px;
+
+    letter-spacing:5px;
+
+    color:#666;
+
+    opacity:0;
+}
+
+
+/* =========================================================
+   CONTROL BAR — auto-hides after 3 seconds
+========================================================= */
+
+#controls{
+    position:fixed;
+
+    left:50%;
+    bottom:18px;
+
+    transform:translateX(-50%);
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:7px;
+
+    border-radius:14px;
+
+    background:rgba(0,0,0,.75);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(15px);
+
+    transition:opacity .6s ease, transform .6s ease;
+}
+
+#controls.hidden{
+    opacity:0;
+
+    transform:translateX(-50%) translateY(30px);
+
+    pointer-events:none;
+}
+
+button{
+    border:0;
+
+    background:#222;
+
+    color:#fff;
+
+    padding:10px 15px;
+
+    border-radius:9px;
+
+    font-family:Inter;
+
+    font-weight:700;
+
+    font-size:11px;
+}
+
+button:hover{
+    background:#95bf47;
+    color:#050505;
+}
+
+#clock{
+    min-width:100px;
+
+    text-align:center;
+
+    font-family:"JetBrains Mono";
+
+    font-size:11px;
+
+    color:#aaa;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:600px){
+
+    #controls{
+        bottom:8px;
+        transform:translateX(-50%) scale(.85);
+    }
+
+    #controls.hidden{
+        opacity:0;
+        transform:translateX(-50%) scale(.85) translateY(30px);
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<div id="viewport">
+
+<div id="stage">
+
+
+<!-- SCENE 01 -->
+<section class="scene" id="scene1">
+    <img src="background-white.jpg" class="white-bg" alt="">
+    <div class="s1-content">
+        <div class="label s1-label">SOLFOREYX / MASTER FILM</div>
+        <div class="s1-title">
+            <span class="s1-line">Every great</span>
+            <span class="s1-line">business starts</span>
+            <span class="s1-line s1-green">with a decision.</span>
+        </div>
+    </div>
+    <div class="s1-bottom">TO STAND OUT / TO BE SEEN / TO GROW</div>
+</section>
+
+
+<!-- SCENE 02 -->
+<section class="scene" id="scene2">
+    <img src="background-white.jpg" class="white-bg" alt="">
+    <div class="s2-wrap">
+        <div class="s2-word"><span>TO <b class="s2-green">STAND OUT.</b></span></div>
+        <div class="s2-word"><span>TO <b class="s2-green">BE SEEN.</b></span></div>
+        <div class="s2-word"><span>TO <b class="s2-green">GROW.</b></span></div>
+    </div>
+    <div class="s2-number">01 / DECISION</div>
+</section>
+
+
+<!-- SCENE 03 -->
+<section class="scene" id="scene3">
+    <img src="background-black.jpg" class="black-bg" alt="">
+    <div class="s3-wrap">
+        <div class="label s3-label">THE DIGITAL WORLD</div>
+        <div class="s3-big">
+            <div><span>Attention</span></div>
+            <div><span>is <b class="accent">expensive.</b></span></div>
+        </div>
+        <div class="s3-sub">
+            And customers don't wait.
+            Your business needs more than an idea.
+        </div>
+    </div>
+</section>
+
+
+<!-- SCENE 04 -->
+<section class="scene" id="scene4">
+    <img src="background-white.jpg" class="white-bg" alt="">
+    <div class="s4-wrap">
+        <div class="label s4-small">THIS IS WHERE WE COME IN</div>
+        <div class="s4-main">
+            <div><span>Build the</span></div>
+            <div><span class="accent">right system.</span></div>
+        </div>
+    </div>
+    <div class="s4-footer">SOLFOREYX / DIGITAL SOLUTIONS</div>
+</section>
+
+
+<!-- SCENE 05 — VIDEO 1 -->
+<section class="scene video-scene">
+    <video id="video1" class="video" src="video1.mp4" muted playsinline preload="auto"></video>
+    <div class="video-overlay"></div>
+    <div class="video-copy">
+        <div class="label video-label">01 / E-COMMERCE</div>
+        <div class="video-heading">
+            <span>E-commerce</span>
+            <span>that <b class="green">converts.</b></span>
+        </div>
+        <div class="video-description">
+            Digital storefronts designed around
+            attention, trust and action.
+        </div>
+    </div>
+</section>
+
+
+<!-- SCENE 06 — VIDEO 2 -->
+<section class="scene video-scene">
+    <video id="video2" class="video" src="video2.mp4" muted playsinline preload="auto"></video>
+    <div class="video-overlay"></div>
+    <div class="video-copy">
+        <div class="label video-label">02 / DESIGN</div>
+        <div class="video-heading">
+            <span>Design that</span>
+            <span><b class="green">captivates.</b></span>
+        </div>
+        <div class="video-description">
+            Visual systems that make your
+            business impossible to overlook.
+        </div>
+    </div>
+</section>
+
+
+<!-- SCENE 07 — VIDEO 3 -->
+<section class="scene video-scene">
+    <video id="video3" class="video" src="video3.mp4" muted playsinline preload="auto"></video>
+    <div class="video-overlay"></div>
+    <div class="video-copy">
+        <div class="label video-label">03 / DEVELOPMENT</div>
+        <div class="video-heading">
+            <span>Development</span>
+            <span>that <b class="green">scales.</b></span>
+        </div>
+        <div class="video-description">
+            Digital infrastructure built to
+            grow with the business.
+        </div>
+    </div>
+</section>
+
+
+<!-- SCENE 08 — VIDEO 4 -->
+<section class="scene video-scene">
+    <video id="video4" class="video" src="video4.mp4" muted playsinline preload="auto"></video>
+    <div class="video-overlay"></div>
+    <div class="video-copy">
+        <div class="label video-label">04 / GROWTH</div>
+        <div class="video-heading">
+            <span>Marketing that</span>
+            <span>reaches the</span>
+            <span><b class="green">right people.</b></span>
+        </div>
+        <div class="video-description">
+            Strategy and digital marketing
+            built around measurable growth.
+        </div>
+    </div>
+</section>
+
+
+<!-- SCENE 09 — SERVICES (7) -->
+<section class="scene" id="scene9">
+    <img src="background-white.jpg" class="white-bg" alt="">
+    <div class="services-title">
+        <div class="label small">SOLFOREYX / WHAT WE DO</div>
+        <h2>
+            <span>Our</span>
+            <span class="green">services.</span>
+        </h2>
+    </div>
+
+    <div class="service-list">
+        <div class="service-row">
+            <div class="service-number">01</div>
+            <div class="service-name"><em>Shopify</em> Store Development</div>
+        </div>
+        <div class="service-row">
+            <div class="service-number">02</div>
+            <div class="service-name">Ads &amp; <em>Digital Marketing</em></div>
+        </div>
+        <div class="service-row">
+            <div class="service-number">03</div>
+            <div class="service-name">Website &amp; <em>Coding</em></div>
+        </div>
+        <div class="service-row">
+            <div class="service-number">04</div>
+            <div class="service-name"><em>UI / UX</em> Design</div>
+        </div>
+        <div class="service-row">
+            <div class="service-number">05</div>
+            <div class="service-name">Transcription &amp; <em>Translation</em></div>
+        </div>
+        <div class="service-row">
+            <div class="service-number">06</div>
+            <div class="service-name"><em>File</em> Conversion</div>
+        </div>
+        <div class="service-row">
+            <div class="service-number">07</div>
+            <div class="service-name"><em>Affiliate</em> Marketing</div>
+        </div>
+    </div>
+
+    <div class="services-footer">
+        ONE DIGITAL PARTNER / ZERO COMPROMISES
+    </div>
+</section>
+
+
+<!-- SCENE 10 -->
+<section class="scene" id="scene10">
+    <img src="background-black.jpg" class="black-bg" alt="">
+    <div class="build-rule"></div>
+    <div class="build-text">
+        <div><span>One digital</span></div>
+        <div><span class="green">partner.</span></div>
+        <div><span>One vision.</span></div>
+    </div>
+</section>
+
+
+<!-- SCENE 11 — FINAL FLYER -->
+<section class="scene" id="scene11">
+    <div class="flyer">
+        <div class="flyer-top">
+            <div class="flyer-brand">Solfore<span>y</span>x</div>
+            <div class="flyer-label">MASTER SOLUTIONS</div>
+        </div>
+
+        <div class="flyer-headline">
+            <div>One Studio.</div>
+            <div class="green">Every Digital</div>
+            <div>Need.</div>
+        </div>
+
+        <div class="flyer-copy">
+            From Shopify stores and websites
+            to branding, advertising,
+            development and digital growth —
+            Solforeyx builds the systems behind
+            ambitious businesses.
+        </div>
+
+        <div class="flyer-services">
+            <div class="flyer-service">
+                <b>01</b>
+                <strong>Shopify</strong>&nbsp; Store Development
+            </div>
+            <div class="flyer-service">
+                <b>02</b>
+                Ads &amp; <strong>Digital Marketing</strong>
+            </div>
+            <div class="flyer-service">
+                <b>03</b>
+                Website &amp; <strong>Coding</strong>
+            </div>
+            <div class="flyer-service">
+                <b>04</b>
+                <strong>UI / UX</strong> Design
+            </div>
+            <div class="flyer-service">
+                <b>05</b>
+                Transcription &amp; <strong>Translation</strong>
+            </div>
+            <div class="flyer-service">
+                <b>06</b>
+                <strong>File</strong> Conversion
+            </div>
+            <div class="flyer-service">
+                <b>07</b>
+                <strong>Affiliate</strong> Marketing
+            </div>
+        </div>
+
+        <img src="portrait.png" class="flyer-portrait" id="portrait" alt="Solforeyx">
+
+        <div class="flyer-cta">
+            <div class="flyer-cta-label">START YOUR PROJECT</div>
+            <div class="flyer-phone">09058322270</div>
+        </div>
+
+        <div class="flyer-footer">BUILT TO BUILD BUSINESSES.</div>
+    </div>
+</section>
+
+
+<!-- SCENE 12 -->
+<section class="scene" id="scene12">
+    <img src="background-black.jpg" class="black-bg" alt="">
+    <div class="end-wrap">
+        <div class="end-brand"><span>S</span>olforeyx</div>
+        <div class="end-line"></div>
+        <div class="end-title">Build smarter.<br><span>Grow bigger.</span></div>
+        <div class="end-phone">09058322270</div>
+    </div>
+    <div class="end-small">DIGITAL SOLUTIONS THAT MOVE BUSINESS</div>
+</section>
+
+
+</div>
+</div>
+
+
+<!-- CONTROLS — auto-hides after 3s -->
+<div id="controls">
+    <button id="play">PLAY</button>
+    <button id="restart">RESTART</button>
+    <div id="clock">00:00 / 01:32</div>
+</div>
+
+
+<script>
+
+/* =========================================================
+   STAGE
+========================================================= */
+
+const stage = document.getElementById("stage");
+
+function resize(){
+    const sx = window.innerWidth / 1080;
+    const sy = window.innerHeight / 1920;
+    const scale = Math.min(sx, sy);
+    stage.style.setProperty("--scale", scale);
+}
+
+window.addEventListener("resize", resize);
+resize();
+
+
+/* =========================================================
+   SCENES
+========================================================= */
+
+const scenes = [
+    document.getElementById("scene1"),
+    document.getElementById("scene2"),
+    document.getElementById("scene3"),
+    document.getElementById("scene4"),
+    document.querySelectorAll(".video-scene")[0],
+    document.querySelectorAll(".video-scene")[1],
+    document.querySelectorAll(".video-scene")[2],
+    document.querySelectorAll(".video-scene")[3],
+    document.getElementById("scene9"),
+    document.getElementById("scene10"),
+    document.getElementById("scene11"),
+    document.getElementById("scene12")
+];
+
+
+/* =========================================================
+   TIMELINE — videos play 10s each
+========================================================= */
+
+const timeline = [
+    [0, 7],
+    [7, 12],
+    [12, 18],
+    [18, 24],
+    [24, 34],
+    [34, 44],
+    [44, 54],
+    [54, 64],
+    [64, 71],
+    [71, 76],
+    [76, 88],
+    [88, 92]
+];
+
+const TOTAL = 92;
+
+
+/* =========================================================
+   VIDEOS
+========================================================= */
+
+const videos = [
+    document.getElementById("video1"),
+    document.getElementById("video2"),
+    document.getElementById("video3"),
+    document.getElementById("video4")
+];
+
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let current = 0;
+let playing = false;
+let lastTime = null;
+let activeScene = -1;
+
+
+/* =========================================================
+   UTILITY
+========================================================= */
+
+function clamp(value, min, max){
+    return Math.max(min, Math.min(max, value));
+}
+
+function ease(t){
+    return 1 - Math.pow(1 - t, 3);
+}
+
+function timeText(t){
+    t = Math.floor(t);
+    const m = Math.floor(t / 60);
+    const s = String(t % 60).padStart(2, "0");
+    return String(m).padStart(2, "0") + ":" + s;
+}
+
+
+/* =========================================================
+   ACTIVATE SCENE
+========================================================= */
+
+function activate(index){
+    if(index === activeScene) return;
+    activeScene = index;
+
+    scenes.forEach(scene => scene.classList.remove("active"));
+    scenes[index].classList.add("active");
+
+    reset(index);
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function reset(index){
+
+    if(index === 0){
+        document.querySelector(".s1-label").style.opacity = 0;
+        document.querySelector(".s1-label").style.transform = "translateY(30px)";
+        document.querySelectorAll(".s1-line").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(120px)";
+        });
+        document.querySelector(".s1-bottom").style.opacity = 0;
+    }
+
+    if(index === 1){
+        document.querySelectorAll(".s2-word span").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateX(-105%)";
+        });
+        const words = document.querySelectorAll(".s2-word span");
+        words[1].style.transform = "translateX(105%)";
+        words[2].style.transform = "translateY(110%)";
+    }
+
+    if(index === 2){
+        document.querySelector(".s3-label").style.opacity = 0;
+        document.querySelectorAll(".s3-big span").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(120px)";
+        });
+        document.querySelector(".s3-sub").style.opacity = 0;
+    }
+
+    if(index === 3){
+        document.querySelector(".s4-small").style.opacity = 0;
+        document.querySelectorAll(".s4-main span").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(120px)";
+        });
+        document.querySelector(".s4-footer").style.opacity = 0;
+    }
+
+    if(index >= 4 && index <= 7){
+        const video = videos[index - 4];
+        video.pause();
+        try { video.currentTime = 0; } catch(e){}
+
+        scenes[index].querySelector(".video-label").style.opacity = 0;
+        scenes[index].querySelector(".video-heading").querySelectorAll("span").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(100px)";
+        });
+        scenes[index].querySelector(".video-description").style.opacity = 0;
+    }
+
+    if(index === 8){
+        document.querySelector(".services-title .small").style.opacity = 0;
+        document.querySelectorAll(".services-title h2 span").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(110px)";
+        });
+        document.querySelectorAll(".service-row").forEach(row => {
+            row.querySelector(".service-number").style.opacity = 0;
+            row.querySelector(".service-number").style.transform = "translateX(-100px)";
+            row.querySelector(".service-name").style.opacity = 0;
+            row.querySelector(".service-name").style.transform = "translateX(-120px)";
+        });
+        document.querySelector(".services-footer").style.opacity = 0;
+    }
+
+    if(index === 9){
+        document.querySelector(".build-rule").style.width = "0";
+        document.querySelectorAll(".build-text span").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(110px)";
+        });
+    }
+
+    if(index === 10){
+        document.querySelector(".flyer-brand").style.opacity = 0;
+        document.querySelector(".flyer-brand").style.transform = "translateY(-40px)";
+        document.querySelector(".flyer-label").style.opacity = 0;
+        document.querySelector(".flyer-label").style.transform = "translateY(-30px)";
+        document.querySelectorAll(".flyer-headline div").forEach(x => {
+            x.style.opacity = 0;
+            x.style.transform = "translateY(120px)";
+        });
+        document.querySelector(".flyer-copy").style.opacity = 0;
+        document.querySelector(".flyer-copy").style.transform = "translateY(40px)";
+        document.querySelectorAll(".flyer-service").forEach((x, i) => {
+            x.style.opacity = 0;
+            x.style.transform = (i % 2 === 0) ? "translateX(-50px)" : "translateX(50px)";
+        });
+        document.querySelector(".flyer-portrait").style.opacity = 0;
+        document.querySelector(".flyer-cta").style.opacity = 0;
+        document.querySelector(".flyer-cta").style.transform = "translateY(35px)";
+        document.querySelector(".flyer-footer").style.opacity = 0;
+    }
+
+    if(index === 11){
+        document.querySelector(".end-brand").style.opacity = 0;
+        document.querySelector(".end-brand").style.transform = "scale(.88)";
+        document.querySelector(".end-line").style.width = "0";
+        document.querySelector(".end-title").style.opacity = 0;
+        document.querySelector(".end-title").style.transform = "translateY(50px)";
+        document.querySelector(".end-phone").style.opacity = 0;
+        document.querySelector(".end-phone").style.transform = "translateY(30px)";
+        document.querySelector(".end-small").style.opacity = 0;
+    }
+}
+
+
+/* =========================================================
+   ANIMATION
+========================================================= */
+
+function animate(index, p){
+
+    if(index === 0){
+        const label = document.querySelector(".s1-label");
+        const lines = document.querySelectorAll(".s1-line");
+        const bottom = document.querySelector(".s1-bottom");
+
+        const a = clamp(p / .20, 0, 1);
+        label.style.opacity = a;
+        label.style.transform = `translateY(${30 * (1 - a)}px)`;
+
+        lines.forEach((line, i) => {
+            const start = .16 + i * .13;
+            const q = clamp((p - start) / .22, 0, 1);
+            line.style.opacity = q;
+            line.style.transform = `translateY(${120 * (1 - ease(q))}px)`;
+        });
+
+        const b = clamp((p - .78) / .18, 0, 1);
+        bottom.style.opacity = b;
+    }
+
+    if(index === 1){
+        const words = document.querySelectorAll(".s2-word span");
+        words.forEach((word, i) => {
+            const start = i * .25;
+            const q = clamp((p - start) / .28, 0, 1);
+            word.style.opacity = q;
+            if(i === 0) word.style.transform = `translateX(${(-105) * (1 - ease(q))}%)`;
+            if(i === 1) word.style.transform = `translateX(${105 * (1 - ease(q))}%)`;
+            if(i === 2) word.style.transform = `translateY(${110 * (1 - ease(q))}%)`;
+        });
+    }
+
+    if(index === 2){
+        const label = document.querySelector(".s3-label");
+        const words = document.querySelectorAll(".s3-big span");
+        const sub = document.querySelector(".s3-sub");
+
+        const a = clamp(p / .18, 0, 1);
+        label.style.opacity = a;
+
+        words.forEach((word, i) => {
+            const q = clamp((p - .18 - i * .18) / .25, 0, 1);
+            word.style.opacity = q;
+            word.style.transform = `translateY(${120 * (1 - ease(q))}px)`;
+        });
+
+        const b = clamp((p - .65) / .25, 0, 1);
+        sub.style.opacity = b;
+    }
+
+    if(index === 3){
+        const small = document.querySelector(".s4-small");
+        const words = document.querySelectorAll(".s4-main span");
+        const footer = document.querySelector(".s4-footer");
+
+        const a = clamp(p / .15, 0, 1);
+        small.style.opacity = a;
+
+        words.forEach((word, i) => {
+            const q = clamp((p - .15 - i * .20) / .27, 0, 1);
+            word.style.opacity = q;
+            word.style.transform = `translateY(${120 * (1 - ease(q))}px)`;
+        });
+
+        const b = clamp((p - .75) / .20, 0, 1);
+        footer.style.opacity = b;
+    }
+
+    if(index >= 4 && index <= 7){
+        const scene = scenes[index];
+        const video = videos[index - 4];
+
+        if(playing && video.paused){
+            video.play().catch(() => {});
+        }
+
+        const label = scene.querySelector(".video-label");
+        const heading = scene.querySelector(".video-heading");
+        const spans = heading.querySelectorAll("span");
+        const description = scene.querySelector(".video-description");
+
+        const a = clamp(p / .15, 0, 1);
+        label.style.opacity = a;
+
+        spans.forEach((span, i) => {
+            const q = clamp((p - .13 - i * .13) / .23, 0, 1);
+            span.style.opacity = q;
+            span.style.transform = `translateY(${100 * (1 - ease(q))}px)`;
+        });
+
+        const b = clamp((p - .62) / .22, 0, 1);
+        description.style.opacity = b;
+    }
+
+    if(index === 8){
+        const small = document.querySelector(".services-title .small");
+        const heading = document.querySelectorAll(".services-title h2 span");
+        const rows = document.querySelectorAll(".service-row");
+        const footer = document.querySelector(".services-footer");
+
+        small.style.opacity = clamp(p / .12, 0, 1);
+
+        heading.forEach((word, i) => {
+            const q = clamp((p - .12 - i * .16) / .25, 0, 1);
+            word.style.opacity = q;
+            word.style.transform = `translateY(${110 * (1 - ease(q))}px)`;
+        });
+
+        rows.forEach((row, i) => {
+            const start = .15 + i * .08;
+            const q = clamp((p - start) / .15, 0, 1);
+            const number = row.querySelector(".service-number");
+            const name = row.querySelector(".service-name");
+            number.style.opacity = q;
+            number.style.transform = `translateX(${-100 * (1 - ease(q))}px)`;
+            name.style.opacity = q;
+            name.style.transform = `translateX(${-120 * (1 - ease(q))}px)`;
+        });
+
+        footer.style.opacity = clamp((p - .90) / .10, 0, 1);
+    }
+
+    if(index === 9){
+        const rule = document.querySelector(".build-rule");
+        const words = document.querySelectorAll(".build-text span");
+
+        const a = clamp(p / .25, 0, 1);
+        rule.style.width = `${760 * ease(a)}px`;
+
+        words.forEach((word, i) => {
+            const q = clamp((p - .18 - i * .22) / .25, 0, 1);
+            word.style.opacity = q;
+            word.style.transform = `translateY(${110 * (1 - ease(q))}px)`;
+        });
+    }
+
+    if(index === 10){
+        const brand = document.querySelector(".flyer-brand");
+        const label = document.querySelector(".flyer-label");
+        const headline = document.querySelectorAll(".flyer-headline div");
+        const copy = document.querySelector(".flyer-copy");
+        const services = document.querySelectorAll(".flyer-service");
+        const portrait = document.querySelector(".flyer-portrait");
+        const cta = document.querySelector(".flyer-cta");
+        const footer = document.querySelector(".flyer-footer");
+
+        const a = clamp(p / .10, 0, 1);
+        brand.style.opacity = a;
+        brand.style.transform = `translateY(${-40 * (1 - ease(a))}px)`;
+
+        const b = clamp((p - .05) / .12, 0, 1);
+        label.style.opacity = b;
+        label.style.transform = `translateY(${-30 * (1 - ease(b))}px)`;
+
+        headline.forEach((word, i) => {
+            const q = clamp((p - .10 - i * .08) / .14, 0, 1);
+            word.style.opacity = q;
+            word.style.transform = `translateY(${120 * (1 - ease(q))}px)`;
+        });
+
+        copy.style.opacity = clamp((p - .35) / .18, 0, 1);
+
+        services.forEach((service, i) => {
+            const start = .42 + i * .04;
+            const q = clamp((p - start) / .12, 0, 1);
+            service.style.opacity = q;
+            service.style.transform = `translateX(${(i % 2 === 0 ? -50 : 50) * (1 - ease(q))}px)`;
+        });
+
+        portrait.style.opacity = clamp((p - .62) / .18, 0, 1);
+
+        const e = clamp((p - .85) / .12, 0, 1);
+        cta.style.opacity = e;
+        cta.style.transform = `translateY(${35 * (1 - ease(e))}px)`;
+
+        footer.style.opacity = clamp((p - .92) / .06, 0, 1);
+    }
+
+    if(index === 11){
+        const brand = document.querySelector(".end-brand");
+        const line = document.querySelector(".end-line");
+        const title = document.querySelector(".end-title");
+        const phone = document.querySelector(".end-phone");
+        const small = document.querySelector(".end-small");
+
+        const a = clamp(p / .20, 0, 1);
+        brand.style.opacity = a;
+        brand.style.transform = `scale(${.88 + .12 * ease(a)})`;
+
+        const b = clamp((p - .20) / .18, 0, 1);
+        line.style.width = `${620 * ease(b)}px`;
+
+        title.style.opacity = clamp((p - .38) / .24, 0, 1);
+        phone.style.opacity = clamp((p - .67) / .18, 0, 1);
+        small.style.opacity = clamp((p - .84) / .16, 0, 1);
+    }
+}
+
+
+/* =========================================================
+   SET TIME
+========================================================= */
+
+function setTime(t){
+    current = Math.max(0, Math.min(TOTAL, t));
+
+    let index = timeline.findIndex(item => current >= item[0] && current < item[1]);
+    if(index === -1) index = current >= TOTAL ? 11 : 0;
+
+    activate(index);
+
+    const start = timeline[index][0];
+    const end = timeline[index][1];
+    const p = clamp((current - start) / (end - start), 0, 1);
+
+    if(index >= 4 && index <= 7){
+        const video = videos[index - 4];
+        const videoTime = current - start;
+        if(Math.abs(video.currentTime - videoTime) > 0.20){
+            try { video.currentTime = videoTime; } catch(e){}
+        }
+    }
+
+    animate(index, p);
+
+    document.getElementById("clock").textContent = timeText(current) + " / 01:32";
+}
+
+
+/* =========================================================
+   CLOCK LOOP
+========================================================= */
+
+function frame(timestamp){
+    if(!playing){
+        lastTime = null;
+        return;
+    }
+
+    if(lastTime === null) lastTime = timestamp;
+
+    const delta = (timestamp - lastTime) / 1000;
+    lastTime = timestamp;
+    current += delta;
+
+    if(current >= TOTAL){
+        current = TOTAL;
+        playing = false;
+        document.getElementById("play").textContent = "PLAY";
+        videos.forEach(v => v.pause());
+        setTime(TOTAL);
+        return;
+    }
+
+    setTime(current);
+    requestAnimationFrame(frame);
+}
+
+
+/* =========================================================
+   PLAY / PAUSE
+========================================================= */
+
+function play(){
+    if(current >= TOTAL) current = 0;
+    playing = true;
+    document.getElementById("play").textContent = "PAUSE";
+
+    const index = timeline.findIndex(item => current >= item[0] && current < item[1]);
+    if(index >= 4 && index <= 7){
+        videos[index - 4].play().catch(() => {});
+    }
+
+    lastTime = null;
+    requestAnimationFrame(frame);
+}
+
+function pause(){
+    playing = false;
+    document.getElementById("play").textContent = "PLAY";
+    videos.forEach(v => v.pause());
+}
+
+
+/* =========================================================
+   AUTO-HIDE CONTROLS (so nothing appears in your recording)
+========================================================= */
+
+const controls = document.getElementById("controls");
+let hideTimer;
+
+function showControls(){
+    controls.classList.remove("hidden");
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(() => {
+        controls.classList.add("hidden");
+    }, 3000);
+}
+
+document.addEventListener("mousemove", showControls);
+document.addEventListener("touchstart", showControls);
+document.addEventListener("click", showControls);
+showControls();
+
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+document.getElementById("play").addEventListener("click", (e) => {
+    e.stopPropagation();
+    playing ? pause() : play();
+});
+
+document.getElementById("restart").addEventListener("click", (e) => {
+    e.stopPropagation();
+    pause();
+    current = 0;
+    activeScene = -1;
+    setTime(0);
+});
+
+
+/* =========================================================
+   KEYBOARD
+========================================================= */
+
+document.addEventListener("keydown", event => {
+    if(event.code === "Space"){
+        event.preventDefault();
+        playing ? pause() : play();
+    }
+    if(event.key === "ArrowRight"){ pause(); setTime(current + .5); }
+    if(event.key === "ArrowLeft"){ pause(); setTime(current - .5); }
+});
+
+
+/* =========================================================
+   START
+========================================================= */
+
+setTime(0);
+
+</script>
+
+</body>
+</html>
